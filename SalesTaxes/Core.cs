@@ -1,4 +1,5 @@
 ﻿using SalesTaxes.Models;
+using System.Data.SqlTypes;
 
 namespace SalesTaxes
 {
@@ -8,7 +9,39 @@ namespace SalesTaxes
         {
             IEnumerable<Sale> sales = LoadInputIntoSales(input);
 
+            PrintSalesReceipts(sales);
+        }
 
+        private static void PrintSalesReceipts(IEnumerable<Sale> sales)
+        {
+            var taxes = "";
+            var total = "";
+
+            var productPrinted = new List<string>();
+
+            foreach (var sale in sales)
+            {
+                if (productPrinted.Contains(sale.Product))
+                    continue;
+
+                var salesFound = sales.Where(s => s.Product == sale.Product);
+
+                var lnToPrint = $"{sale.Product}: {salesFound.Sum(s=> s.Price)} ";
+
+                if (salesFound.Count() > 1)
+                    lnToPrint += $"({salesFound.Count()} @ {sale.Price})";
+
+                productPrinted.Add(sale.Product);
+                Console.WriteLine(lnToPrint);
+            }
+
+            Console.WriteLine($"Sales Taxes: {taxes}");
+            Console.WriteLine($"Total: {total}");
+        }
+
+        private static bool GroupSale(Sale sale, IEnumerable<Sale> sales)
+        {
+            throw new NotImplementedException();
         }
 
         public static IEnumerable<Sale> LoadInputIntoSales(string[] inputArray)
