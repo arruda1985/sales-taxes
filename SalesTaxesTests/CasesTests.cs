@@ -6,15 +6,18 @@ namespace SalesTaxesTests
     public class CasesTests
     {
         private readonly StringWriter _stringWriter;
+        private readonly Core _core;
 
         public CasesTests()
         {
             _stringWriter = new StringWriter();
             Console.SetOut(_stringWriter);
+
+            _core = new Core();
         }
 
         [Fact]
-        public void Case3()
+        public void Input3()
         {
 
             var input = new string[] {
@@ -29,15 +32,16 @@ namespace SalesTaxesTests
 
             var output = _stringWriter.ToString().Split("\r\n");
 
-            Assert.Equal("Book: 24.98 (2 @ 12.49)", output[0]);
-            Assert.Equal("Music CD: 16.49", output[1]);
-            Assert.Equal("Chocolate bar: 0.85", output[2]);
-            Assert.Equal("Sales Taxes: 1.50", output[3]);
-            Assert.Equal("Total: 42.32", output[4]);
+            Assert.Equal("Imported bottle of perfume: 32.19", output[0]);
+            Assert.Equal("Bottle of perfume: 20.89", output[1]);
+            Assert.Equal("Packet of headache pills: 9.75", output[2]);
+            Assert.Equal("Imported box of chocolates: 23.70 (2 @ 11.85)", output[3]);
+            Assert.Equal("Sales Taxes: 7.30", output[4]);
+            Assert.Equal("Total: 86.53", output[5]);
         }
 
         [Fact]
-        public void Case2()
+        public void Input2()
         {
 
             var input = new string[] {
@@ -56,7 +60,7 @@ namespace SalesTaxesTests
         }
 
         [Fact]
-        public void Case1()
+        public void Input1()
         {
 
             var input = new string[] {
@@ -70,13 +74,11 @@ namespace SalesTaxesTests
 
             var output = _stringWriter.ToString().Split("\r\n");
 
-
-            Assert.Equal("Imported bottle of perfume: 32.19", output[0]);
-            Assert.Equal("Bottle of perfume: 20.89", output[1]);
-            Assert.Equal("Packet of headache pills: 9.75", output[2]);
-            Assert.Equal("Imported box of chocolates: 23.70 (2 @ 11.85)", output[3]);
-            Assert.Equal("Sales Taxes: 7.30", output[4]);
-            Assert.Equal("Total: 86.53", output[5]);
+            Assert.Equal("Book: 24.98 (2 @ 12.49)", output[0]);
+            Assert.Equal("Music CD: 16.49", output[1]);
+            Assert.Equal("Chocolate bar: 0.85", output[2]);
+            Assert.Equal("Sales Taxes: 1.50", output[3]);
+            Assert.Equal("Total: 42.32", output[4]);
         }
     }
 }

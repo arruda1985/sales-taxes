@@ -8,7 +8,8 @@ namespace SalesTaxesTests
 {
     public class CoreTests
     {
-      
+
+
         [Fact]
         public void GetSaleTax_WithImportedDiscount_ReturnsImportTax()
         {
@@ -22,7 +23,7 @@ namespace SalesTaxesTests
             var tax = Core.GetSaleTax(sale);
 
 
-            Assert.Equal(28.50M, tax); 
+            Assert.Equal(7.15M, tax); 
         }
 
         [Fact]

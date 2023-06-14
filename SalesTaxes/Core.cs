@@ -15,43 +15,55 @@ namespace SalesTaxes
 
         private static void PrintSalesReceipts(IEnumerable<Sale> sales)
         {
-            var taxes = "";
-            var total = "";
+            var taxesTotal = 00.00M;
+            var total = 00.00M;
 
-            var productPrinted = new List<string>();
+            var productsPrinted = new List<string>();
 
             foreach (var sale in sales)
             {
-                if (productPrinted.Contains(sale.Product))
+                if (productsPrinted.Contains(sale.Product))
                     continue;
+
+
 
                 var salesFound = sales.Where(s => s.Product == sale.Product);
 
+                var totalQuantity = salesFound.Sum(s => s.Quantity);
+
                 var saleTaxe = GetSaleTax(sale);
 
-                var lnToPrint = $"{sale.Product}: {salesFound.Sum(s => s.Price)} ";
+                var priceWithTax = sale.Price + saleTaxe;
+
+                total += priceWithTax * totalQuantity;
+                taxesTotal += saleTaxe * totalQuantity;
+
+                var lnToPrint = $"{sale.Product}: {priceWithTax * totalQuantity}";
 
                 if (salesFound.Count() > 1)
-                    lnToPrint += $"({salesFound.Count()} @ {sale.Price})";
+                    lnToPrint += $" ({totalQuantity} @ {sale.Price + saleTaxe})";
 
-                productPrinted.Add(sale.Product);
+                productsPrinted.Add(sale.Product);
                 Console.WriteLine(lnToPrint);
             }
 
-            Console.WriteLine($"Sales Taxes: {taxes}");
+            Console.WriteLine($"Sales Taxes: {taxesTotal}");
             Console.WriteLine($"Total: {total}");
         }
 
         public static decimal GetSaleTax(Sale sale)
         {
-            var taxes = 0.0M;
-            if (sale.Product.Contains("Imported"))
-                taxes += sale.Price * 0.5M;
+            var totalTax = 0.0M;
+
 
             if (!ProductsGroupingTaxes.TaxExceptions.Contains(sale.Product))
-                taxes += sale.Price * 0.1M;
+                totalTax += sale.Price * 0.1M;
 
-            return Math.Round(taxes, 2);
+            if (sale.Product.Contains("Imported"))
+                totalTax += sale.Price * 0.05M;
+
+
+            return Math.Ceiling(totalTax * 20) / 20;
         }
 
 
