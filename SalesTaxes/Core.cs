@@ -1,4 +1,5 @@
-﻿using SalesTaxes.Models;
+﻿using SalesTaxes.Constants;
+using SalesTaxes.Models;
 using System.Data.SqlTypes;
 
 namespace SalesTaxes
@@ -26,7 +27,9 @@ namespace SalesTaxes
 
                 var salesFound = sales.Where(s => s.Product == sale.Product);
 
-                var lnToPrint = $"{sale.Product}: {salesFound.Sum(s=> s.Price)} ";
+                var saleTaxe = GetSaleTax(sale);
+
+                var lnToPrint = $"{sale.Product}: {salesFound.Sum(s => s.Price)} ";
 
                 if (salesFound.Count() > 1)
                     lnToPrint += $"({salesFound.Count()} @ {sale.Price})";
@@ -39,10 +42,12 @@ namespace SalesTaxes
             Console.WriteLine($"Total: {total}");
         }
 
-        private static bool GroupSale(Sale sale, IEnumerable<Sale> sales)
+        public static decimal GetSaleTax(Sale sale)
         {
             throw new NotImplementedException();
         }
+
+
 
         public static IEnumerable<Sale> LoadInputIntoSales(string[] inputArray)
         {
