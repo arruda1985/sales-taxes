@@ -6,14 +6,11 @@ namespace SalesTaxesTests
     public class CasesTests
     {
         private readonly StringWriter _stringWriter;
-        private readonly Core _core;
 
         public CasesTests()
         {
             _stringWriter = new StringWriter();
             Console.SetOut(_stringWriter);
-
-            _core = new Core();
         }
 
         [Fact]
@@ -28,7 +25,7 @@ namespace SalesTaxesTests
                                         "1 Imported box of chocolates at 11.25"
                                      };
 
-            _core.Run(input);
+            Core.Run(input);
 
             var output = _stringWriter.ToString().Split("\r\n");
 
@@ -47,7 +44,7 @@ namespace SalesTaxesTests
                                        "1 Imported box of chocolates at 10.00",
                                        "1 Imported bottle of perfume at 47.50"
                                      };
-            _core.Run(input);
+            Core.Run(input);
 
             var output = _stringWriter.ToString().Split("\r\n");
 
@@ -69,7 +66,7 @@ namespace SalesTaxesTests
                                         "1 Chocolate bar at 0.85"
                                     };
 
-            _core.Run(input);
+            Core.Run(input);
 
             var output = _stringWriter.ToString().Split("\r\n");
 

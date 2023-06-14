@@ -5,12 +5,6 @@ namespace SalesTaxesTests
 {
     public class CoreTests
     {
-        private readonly Core _core;
-
-        public CoreTests()
-        {
-            _core = new Core();
-        }
 
         [Fact]
         public void LoadInputIntoSales_WithAValidInput_ShouldReturnSales()
@@ -22,7 +16,7 @@ namespace SalesTaxesTests
                                     };
 
 
-            var result = _core.LoadInputIntoSales(input).ToList();
+            var result = Core.LoadInputIntoSales(input).ToList();
 
             Assert.Equal("Book", result[0].Product);
             Assert.Equal(1, result[0].Quantity);
@@ -38,7 +32,7 @@ namespace SalesTaxesTests
         [Fact]
         public void LoadInputIntoSales_WithAInValidInput_ShouldReturnEmptyArray()
         {
-            var result = _core.LoadInputIntoSales(Array.Empty<string>()).ToList();
+            var result = Core.LoadInputIntoSales(Array.Empty<string>()).ToList();
 
             Assert.Empty(result);
         }
