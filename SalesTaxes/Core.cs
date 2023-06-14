@@ -10,7 +10,12 @@ namespace SalesTaxes
     {
         public void Run(string[] input)
         {
+            IEnumerable<Sale> incommingValues = LoadInputIntoSales(input);
+        }
 
+        private IEnumerable<Sale> LoadInputIntoSales(string[] input)
+        {
+            throw new NotImplementedException();
         }
     }
 }
