@@ -1,53 +1,31 @@
-﻿namespace SalesTaxes
+﻿using SalesTaxes.Models;
+
+namespace SalesTaxes
 {
     public class Core
     {
         public static void Run(string[] input)
         {
             IEnumerable<Sale> sales = LoadInputIntoSales(input);
+
+
         }
 
-        public static IEnumerable<Sale> LoadInputIntoSales(string[] input)
+        public static IEnumerable<Sale> LoadInputIntoSales(string[] inputArray)
         {
             var sales = new List<Sale>();
 
-            foreach (var i in input)
+            foreach (var input in inputArray)
             {
-                if (!string.IsNullOrEmpty(i))
+                if (!string.IsNullOrEmpty(input))
                 {
-                    var sale = new Sale();
-
-                    GetQuantity(i, sale);
-                    GetProductName(i, sale);
-                    GetProductPrice(i, sale);
-
-                    sales.Add(sale);
+                    sales.Add(new Sale(input));
                 }
             }
 
             return sales;
         }
 
-        private static void GetProductPrice(string i, Sale sale)
-        {
-            _ = decimal.TryParse(i.Remove(0, i.Length - 5), out decimal price);
 
-            sale.Price = price;
-        }
-
-        private static void GetProductName(string i, Sale sale)
-        {
-            if (i[i.Length - 5] == ' ')
-                sale.Product = i.Remove(i.Length - 8, 8).Substring(2);
-            else
-                sale.Product = i.Remove(i.Length - 9, 9).Substring(2);
-        }
-
-        private static void GetQuantity(string i, Sale sale)
-        {
-            _ = int.TryParse(i.Split(' ')[0], out int quantity);
-
-            sale.Quantity = quantity;
-        }
     }
 }
