@@ -44,7 +44,14 @@ namespace SalesTaxes
 
         public static decimal GetSaleTax(Sale sale)
         {
-            throw new NotImplementedException();
+            var taxes = 0.0M;
+            if (sale.Product.Contains("Imported"))
+                taxes += sale.Price * 0.5M;
+
+            if (!ProductsGroupingTaxes.TaxExceptions.Contains(sale.Product))
+                taxes += sale.Price * 0.1M;
+
+            return Math.Round(taxes, 2);
         }
 
 

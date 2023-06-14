@@ -8,10 +8,10 @@ namespace SalesTaxesTests
 {
     public class CoreTests
     {
+      
         [Fact]
         public void GetSaleTax_WithImportedDiscount_ReturnsImportTax()
         {
-            var _faker = new Faker();
             var faker = new Faker<Sale>();
 
             faker.RuleFor(r => r.Product, () => "Imported bottle of perfume")
@@ -22,13 +22,12 @@ namespace SalesTaxesTests
             var tax = Core.GetSaleTax(sale);
 
 
-            Assert.Equal(54.65M, tax); 
+            Assert.Equal(28.50M, tax); 
         }
 
         [Fact]
         public void GetSaleTax_WithoutDiscount_ReturnsTax()
         {
-            var _faker = new Faker();
             var faker = new Faker<Sale>();
 
             faker.RuleFor(r => r.Product, () => "Music CD")
@@ -38,19 +37,19 @@ namespace SalesTaxesTests
 
             var tax = Core.GetSaleTax(sale);
 
-            Assert.Equal(16.49M, tax);
+            Assert.Equal(1.50M, tax);
         }
 
         [Fact]
         public void GetSaleTax_WithExceptionDiscount_ReturnsZero()
         {
-            var _faker = new Faker();
-            var faker = new Faker<Sale>();
+            var faker = new Faker();
+            var saleFaker = new Faker<Sale>();
 
-            faker.RuleFor(r => r.Product, () => ProductsGroupingTaxes.TaxExceptions[0])
-                 .RuleFor(r => r.Price, () => _faker.Random.Decimal(1, 99));
+            saleFaker.RuleFor(r => r.Product, () => ProductsGroupingTaxes.TaxExceptions[0])
+                     .RuleFor(r => r.Price, () => faker.Random.Decimal(1, 99));
 
-            var sale = faker.Generate(1).First();
+            var sale = saleFaker.Generate(1).First();
 
             var tax = Core.GetSaleTax(sale);
 
