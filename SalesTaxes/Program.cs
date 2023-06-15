@@ -1,4 +1,4 @@
-﻿using SalesTaxes;
+﻿using SalesTaxes.Services;
 
 // Same inputs from test
 var input3 = new string[] {
@@ -24,10 +24,10 @@ var input1 = new string[] {
 
 
 // Calling the process for each input
-Core.Run(input1);
+CoreService.Run(input1);
 Console.WriteLine("================================");
 
-Core.Run(input2);
+CoreService.Run(input2);
 Console.WriteLine("================================");
 
-Core.Run(input3);
+CoreService.Run(input3);

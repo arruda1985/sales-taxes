@@ -1,8 +1,6 @@
-﻿using SalesTaxes.Services;
-
-namespace SalesTaxes
+﻿namespace SalesTaxes.Services
 {
-    public class Core
+    public class CoreService
     {
         /// <summary>
         /// Main class, receives the input information and work as a controller to delegate the tasks

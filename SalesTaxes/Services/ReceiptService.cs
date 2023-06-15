@@ -1,5 +1,4 @@
-﻿using SalesTaxes.Constants;
-using SalesTaxes.Models;
+﻿using SalesTaxes.Models;
 
 namespace SalesTaxes.Services
 {

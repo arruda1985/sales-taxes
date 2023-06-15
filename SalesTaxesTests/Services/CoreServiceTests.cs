@@ -1,19 +1,16 @@
-﻿using SalesTaxes;
+﻿using SalesTaxes.Services;
 using Xunit;
 
-namespace SalesTaxesTests
+namespace SalesTaxesTests.Services
 {
-    public class CasesTests
+    public class CoreServiceTests
     {
         private readonly StringWriter _stringWriter;
-        private readonly Core _core;
 
-        public CasesTests()
+        public CoreServiceTests()
         {
             _stringWriter = new StringWriter();
             Console.SetOut(_stringWriter);
-
-            _core = new Core();
         }
 
         [Fact]
@@ -28,7 +25,7 @@ namespace SalesTaxesTests
                                         "1 Imported box of chocolates at 11.25"
                                      };
 
-            Core.Run(input);
+            CoreService.Run(input);
 
             var output = _stringWriter.ToString().Split("\r\n");
 
@@ -48,7 +45,7 @@ namespace SalesTaxesTests
                                        "1 Imported box of chocolates at 10.00",
                                        "1 Imported bottle of perfume at 47.50"
                                      };
-            Core.Run(input);
+            CoreService.Run(input);
 
             var output = _stringWriter.ToString().Split("\r\n");
 
@@ -70,7 +67,7 @@ namespace SalesTaxesTests
                                         "1 Chocolate bar at 0.85"
                                     };
 
-            Core.Run(input);
+            CoreService.Run(input);
 
             var output = _stringWriter.ToString().Split("\r\n");
 
