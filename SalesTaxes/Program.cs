@@ -1,5 +1,6 @@
 ﻿using SalesTaxes;
 
+// Same inputs from test
 var input3 = new string[] {
                                         "1 Imported bottle of perfume at 27.99",
                                         "1 Bottle of perfume at 18.99",
@@ -20,6 +21,9 @@ var input1 = new string[] {
                                         "1 Chocolate bar at 0.85"
                                     };
 
+
+
+// Calling the process for each input
 Core.Run(input1);
 Console.WriteLine("================================");
 
