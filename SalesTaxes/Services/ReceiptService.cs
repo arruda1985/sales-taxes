@@ -34,7 +34,7 @@ namespace SalesTaxes.Services
 
                 var lnToPrint = $"{sale.Product}: {priceWithTax * totalQuantity}";
 
-                if (salesFound.Count() > 1)
+                if (salesFound.Count() > 1 || totalQuantity > 1)
                     lnToPrint += $" ({totalQuantity} @ {sale.Price + saleTaxe})";
 
                 productsPrinted.Add(sale.Product);
