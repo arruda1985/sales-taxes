@@ -1,33 +1,57 @@
 ﻿using SalesTaxes.Services;
 
-// Same inputs from test
-var input3 = new string[] {
-                                        "1 Imported bottle of perfume at 27.99",
-                                        "1 Bottle of perfume at 18.99",
-                                        "1 Packet of headache pills at 9.75",
-                                        "1 Imported box of chocolates at 11.25",
-                                        "1 Imported box of chocolates at 11.25"
-                                     };
 
-var input2 = new string[] {
-                                       "1 Imported box of chocolates at 10.00",
-                                       "1 Imported bottle of perfume at 47.50"
-                                     };
+var inputStr = new List<string>();
+Console.WriteLine("Please enter row by row of the sale");
+Console.WriteLine("");
+Console.WriteLine("Valid format '[quantity] [nameOfTheProduct] at [price]'");
+Console.WriteLine("");
+Console.WriteLine("");
+while (true)
+{
+    Console.WriteLine("Enter a valid sale row, [Type 'print' to print the receipt]");
+    var aux = Console.ReadLine();
 
-var input1 = new string[] {
-                                        "1 Book at 12.49",
-                                        "1 Book at 12.49",
-                                        "1 Music CD at 14.99",
-                                        "1 Chocolate bar at 0.85"
-                                    };
+    if (aux.ToLower() != "print")
+    {
+        if (ValidateString(aux))
+        {
+            inputStr.Add(aux);
+        }
+        else
+        {
+            Console.WriteLine($"Invalid entered input:{aux} -> Valid format '[quantity] [nameOfTheProduct] at [price]'");
+        }
+    }
+    else
+        break;
 
 
+}
 
-// Calling the process for each input
-CoreService.Run(input1);
-Console.WriteLine("================================");
+Console.Clear();
 
-CoreService.Run(input2);
-Console.WriteLine("================================");
+Console.WriteLine("----------Receipt----------");
+Console.WriteLine("");
+Console.WriteLine("");
+CoreService.Run(inputStr.ToArray());
 
-CoreService.Run(input3);
+bool ValidateString(string input)
+{
+    var result = false;
+
+    try
+    {
+        result = decimal.TryParse(input.Remove(0, input.Length - 5), out decimal price);
+        result = _ = int.TryParse(input.Split(' ')[0], out int quantity);
+        result = !string.IsNullOrEmpty(input.Split(string.Concat(" at ", price.ToString()))[0].Split(string.Concat(quantity, " "))[1]);
+
+    }
+    catch
+    {
+        return false;
+    }
+
+    return result;
+}
+

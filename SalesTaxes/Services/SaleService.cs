@@ -20,8 +20,8 @@ namespace SalesTaxes.Services
                     var sale = new Sale();
 
                     GetQuantity(input, sale);
-                    GetProductName(input, sale);
                     GetProductPrice(input, sale);
+                    GetProductName(input, sale);
                     sales.Add(sale);
                 }
             }
@@ -38,10 +38,7 @@ namespace SalesTaxes.Services
 
         private static void GetProductName(string input, Sale sale)
         {
-            if (input[input.Length - 5] == ' ')
-                sale.Product = input.Remove(input.Length - 8, 8).Substring(2);
-            else
-                sale.Product = input.Remove(input.Length - 9, 9).Substring(2);
+            sale.Product = input.Split(string.Concat(" at ", sale.Price.ToString()))[0].Split(string.Concat(sale.Quantity, " "))[1];
         }
 
         private static void GetQuantity(string input, Sale sale)
