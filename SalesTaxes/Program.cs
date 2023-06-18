@@ -1,5 +1,4 @@
-﻿using SalesTaxes.Services;
-
+﻿using SalesTaxes.Core.Services;
 
 var inputStr = new List<string>();
 Console.WriteLine("Please enter row by row of the sale");

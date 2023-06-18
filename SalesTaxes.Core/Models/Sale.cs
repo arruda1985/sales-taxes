@@ -1,4 +1,4 @@
-﻿namespace SalesTaxes.Models
+﻿namespace SalesTaxes.Core.Models
 {
     /// <summary>
     /// Sale model

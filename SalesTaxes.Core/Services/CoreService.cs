@@ -1,4 +1,4 @@
-﻿namespace SalesTaxes.Services
+﻿namespace SalesTaxes.Core.Services
 {
     public class CoreService
     {

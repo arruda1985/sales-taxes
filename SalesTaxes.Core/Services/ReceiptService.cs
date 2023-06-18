@@ -1,6 +1,7 @@
-﻿using SalesTaxes.Models;
+﻿
+using SalesTaxes.Core.Models;
 
-namespace SalesTaxes.Services
+namespace SalesTaxes.Core.Services
 {
     public class ReceiptService
     {

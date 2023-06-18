@@ -1,4 +1,4 @@
-﻿namespace SalesTaxes.Constants
+﻿namespace SalesTaxes.Core.Constants
 {
     public static class ProductsGroupingTaxes
     {

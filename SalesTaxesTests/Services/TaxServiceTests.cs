@@ -1,7 +1,7 @@
 ﻿using Bogus;
-using SalesTaxes.Constants;
-using SalesTaxes.Models;
-using SalesTaxes.Services;
+using SalesTaxes.Core.Constants;
+using SalesTaxes.Core.Models;
+using SalesTaxes.Core.Services;
 using Xunit;
 
 namespace SalesTaxesTests.Services

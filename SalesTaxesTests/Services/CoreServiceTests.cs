@@ -1,4 +1,4 @@
-﻿using SalesTaxes.Services;
+﻿using SalesTaxes.Core.Services;
 using Xunit;
 
 namespace SalesTaxesTests.Services

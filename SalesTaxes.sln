@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxes", "SalesTaxes\SalesTaxes.csproj", "{1C7FBB1D-7FDC-43E9-ACC2-863C72584718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesTaxes.Console", "SalesTaxes\SalesTaxes.Console.csproj", "{1C7FBB1D-7FDC-43E9-ACC2-863C72584718}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxesTests", "SalesTaxesTests\SalesTaxesTests.csproj", "{70192F60-6ED5-49B2-9EA5-33AD13C7CB44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesTaxes.Tests", "SalesTaxesTests\SalesTaxes.Tests.csproj", "{70192F60-6ED5-49B2-9EA5-33AD13C7CB44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxes.Core", "SalesTaxes.Core\SalesTaxes.Core.csproj", "{33875684-D496-46CB-8DD9-BFFB63813274}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{70192F60-6ED5-49B2-9EA5-33AD13C7CB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70192F60-6ED5-49B2-9EA5-33AD13C7CB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70192F60-6ED5-49B2-9EA5-33AD13C7CB44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33875684-D496-46CB-8DD9-BFFB63813274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33875684-D496-46CB-8DD9-BFFB63813274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33875684-D496-46CB-8DD9-BFFB63813274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33875684-D496-46CB-8DD9-BFFB63813274}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
