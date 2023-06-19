@@ -23,6 +23,10 @@ namespace SalesTaxes.Core.Services
             if (sale.Product.Contains("Imported"))
                 totalTax += sale.Price * 0.05M;
 
+            // This next row is to return the tax value rounded
+            // Multiplied the number by 20 to shift the decimal point two places to the right to allow working with whole numbers.
+            // Used  Math.Ceiling() method to round the number up to the nearest whole number.
+            // Divided the rounded number by 20 to shift the decimal point back to its original position.
             return Math.Ceiling(totalTax * 20) / 20;
         }
     }

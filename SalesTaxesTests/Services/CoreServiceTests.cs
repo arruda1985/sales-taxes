@@ -161,5 +161,19 @@ namespace SalesTaxesTests.Services
             Assert.Equal("Sales Taxes: 2.10", output[2]);
             Assert.Equal("Total: 23.10", output[3]);
         }
+
+        [Theory]
+        [InlineData("1 Music CD  at 9.99", true)]
+        [InlineData("4 Chocolate bar at 0.10", true)]
+        [InlineData("2 Pack of Bacon at 1.99", true)]
+        [InlineData("2 Pack of Bacon at 100.99", true)]
+        [InlineData("x anything  at 3.99", false)]
+        [InlineData("1 anything  at 3.9", false)]
+        [InlineData("10 anything  at 3x9", false)]
+        [InlineData("1anythingat32.9", false)]
+        public void ValidateString(string input, bool expectedResult)
+        {
+            Assert.Equal(expectedResult, CoreService.ValidateString(input));
+        }
     }
 }
