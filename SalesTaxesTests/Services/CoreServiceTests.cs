@@ -141,5 +141,25 @@ namespace SalesTaxesTests.Services
             Assert.Equal("Sales Taxes: 5.40", output[2]);
             Assert.Equal("Total: 55.89", output[3]);
         }
+
+        [Fact]
+        public void Custom_Input4()
+        {
+
+            var input = new string[] {
+                                        "1 cd at 10.00",
+                                        "1 cd at 11.00",
+                                     };
+
+
+            CoreService.Run(input);
+
+            var output = _stringWriter.ToString().Split("\r\n");
+
+            Assert.Equal("cd: 11.00", output[0]);
+            Assert.Equal("cd: 12.10", output[1]);
+            Assert.Equal("Sales Taxes: 2.10", output[2]);
+            Assert.Equal("Total: 23.10", output[3]);
+        }
     }
 }

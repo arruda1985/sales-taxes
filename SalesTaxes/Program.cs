@@ -6,7 +6,7 @@ var inputStr = new List<string>();
 // writing basic instructions for the user
 Console.WriteLine("Please enter row by row of the sale");
 Console.WriteLine("");
-Console.WriteLine("Valid format '[quantity] [nameOfTheProduct] at [price]'");
+Console.WriteLine("Valid format '[quantity] [nameOfTheProduct] at [price(00.00)]'");
 Console.WriteLine("");
 Console.WriteLine("");
 
@@ -38,7 +38,6 @@ while (true)
 Console.Clear();
 
 Console.WriteLine("----------Receipt----------");
-Console.WriteLine("");
 Console.WriteLine("");
 
 // Running the Core service to do all the work

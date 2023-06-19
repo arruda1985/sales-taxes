@@ -17,14 +17,14 @@ namespace SalesTaxes.Core.Services
             var taxesTotal = 00.00M;
             var total = 00.00M;
 
-            var productsPrinted = new List<string>();
+            var productsPrinted = new List<KeyValuePair<decimal, string>>();
 
             foreach (var sale in sales)
             {
-                if (productsPrinted.Contains(sale.Product))
+                if (sale.Product != null && productsPrinted.Any(pp => pp.Key == sale.Price && pp.Value == sale.Product))
                     continue;
 
-                var salesFound = sales.Where(s => s.Product == sale.Product);
+                var salesFound = sales.Where(s => s.Product == sale.Product && s.Price == sale.Price);
 
                 var totalQuantity = salesFound.Sum(s => s.Quantity);
 
@@ -41,7 +41,7 @@ namespace SalesTaxes.Core.Services
                 if (salesFound.Count() > 1 || totalQuantity > 1)
                     lnToPrint += $" ({totalQuantity} @ {sale.Price + saleTaxe})";
 
-                productsPrinted.Add(sale.Product);
+                productsPrinted.Add(new KeyValuePair<decimal, string>(sale.Price, sale.Product));
                 Console.WriteLine(lnToPrint);
             }
 
@@ -49,7 +49,7 @@ namespace SalesTaxes.Core.Services
             Console.WriteLine($"Total: {total}");
         }
 
-       
+
 
     }
 }

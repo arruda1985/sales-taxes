@@ -35,7 +35,11 @@ namespace SalesTaxes.Core.Services
 
         private static void GetProductPrice(string input, Sale sale)
         {
-            _ = decimal.TryParse(input.Remove(0, input.Length - 5), out decimal price);
+            var priceRemoved = input.Remove(0, input.Length - 5);
+
+            var priceStr = string.Concat(priceRemoved[0], priceRemoved[1], priceRemoved[2], priceRemoved[3], priceRemoved[4]);
+
+            _ = decimal.TryParse(priceRemoved, out decimal price);
 
             sale.Price = price;
         }
