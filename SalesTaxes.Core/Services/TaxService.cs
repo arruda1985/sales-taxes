@@ -20,7 +20,7 @@ namespace SalesTaxes.Core.Services
             if (!ProductsGroupingTaxes.TaxExceptions.Contains(sale.Product))
                 totalTax += sale.Price * 0.1M;
 
-            if (sale.Product.Contains("Imported"))
+            if (sale.Product.ToLower().Contains("imported"))
                 totalTax += sale.Price * 0.05M;
 
             // This next row is to return the tax value rounded

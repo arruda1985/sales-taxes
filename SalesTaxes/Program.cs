@@ -14,8 +14,13 @@ Console.WriteLine("");
 // loading the sales rows
 while (true)
 {
-    Console.WriteLine("Enter a valid sale row, [Type 'print' to print the receipt]");
+    Console.WriteLine("Enter a valid sale row, [Type 'print' to print the receipt, 'exit' to leave]");
     var aux = Console.ReadLine();
+
+    if (aux?.ToLower() == "exit")
+    {
+        Environment.Exit(0);
+    }
 
     if (aux != null && aux.ToLower() != "print")
     {
@@ -42,8 +47,3 @@ Console.WriteLine("");
 
 // Running the Core service to do all the work
 CoreService.Run(inputStr.ToArray());
-
-
-
-
-

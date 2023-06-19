@@ -167,6 +167,7 @@ namespace SalesTaxesTests.Services
         [InlineData("4 Chocolate bar at 0.10", true)]
         [InlineData("2 Pack of Bacon at 1.99", true)]
         [InlineData("2 Pack of Bacon at 100.99", true)]
+        [InlineData("2 Pack of Bacon at 1000.99", true)]
         [InlineData("x anything  at 3.99", false)]
         [InlineData("1 anything  at 3.9", false)]
         [InlineData("10 anything  at 3x9", false)]
