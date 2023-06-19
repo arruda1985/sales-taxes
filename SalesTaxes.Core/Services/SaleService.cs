@@ -3,6 +3,9 @@ using SalesTaxes.Core.Models;
 
 namespace SalesTaxes.Core.Services
 {
+    /// <summary>
+    /// Sale service
+    /// </summary>
     public class SaleService
     {
         /// <summary>
@@ -48,5 +51,6 @@ namespace SalesTaxes.Core.Services
 
             sale.Quantity = quantity;
         }
+
     }
 }

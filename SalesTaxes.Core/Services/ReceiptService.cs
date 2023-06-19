@@ -3,6 +3,9 @@ using SalesTaxes.Core.Models;
 
 namespace SalesTaxes.Core.Services
 {
+    /// <summary>
+    /// Receipt Service
+    /// </summary>
     public class ReceiptService
     {
         /// <summary>

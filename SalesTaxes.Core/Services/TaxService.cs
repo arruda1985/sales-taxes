@@ -3,6 +3,9 @@ using SalesTaxes.Core.Models;
 
 namespace SalesTaxes.Core.Services
 {
+    /// <summary>
+    /// Tax Service
+    /// </summary>
     public class TaxService
     {
         /// <summary>

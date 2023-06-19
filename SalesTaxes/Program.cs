@@ -1,19 +1,25 @@
-﻿using SalesTaxes.Core.Services;
+﻿// Top Level statement used to load the sales input
+using SalesTaxes.Core.Services;
 
 var inputStr = new List<string>();
+
+// writing basic instructions for the user
 Console.WriteLine("Please enter row by row of the sale");
 Console.WriteLine("");
 Console.WriteLine("Valid format '[quantity] [nameOfTheProduct] at [price]'");
 Console.WriteLine("");
 Console.WriteLine("");
+
+
+// loading the sales rows
 while (true)
 {
     Console.WriteLine("Enter a valid sale row, [Type 'print' to print the receipt]");
     var aux = Console.ReadLine();
 
-    if (aux.ToLower() != "print")
+    if (aux != null && aux.ToLower() != "print")
     {
-        if (ValidateString(aux))
+        if (CoreService.ValidateString(aux))
         {
             inputStr.Add(aux);
         }
@@ -28,29 +34,17 @@ while (true)
 
 }
 
+// Clearing console to print the receipt
 Console.Clear();
 
 Console.WriteLine("----------Receipt----------");
 Console.WriteLine("");
 Console.WriteLine("");
+
+// Running the Core service to do all the work
 CoreService.Run(inputStr.ToArray());
 
-bool ValidateString(string input)
-{
-    var result = false;
 
-    try
-    {
-        result = decimal.TryParse(input.Remove(0, input.Length - 5), out decimal price);
-        result = _ = int.TryParse(input.Split(' ')[0], out int quantity);
-        result = !string.IsNullOrEmpty(input.Split(string.Concat(" at ", price.ToString()))[0].Split(string.Concat(quantity, " "))[1]);
 
-    }
-    catch
-    {
-        return false;
-    }
 
-    return result;
-}
 
