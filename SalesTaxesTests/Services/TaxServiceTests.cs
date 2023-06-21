@@ -15,6 +15,7 @@ namespace SalesTaxesTests.Services
 
             faker.RuleFor(r => r.Product, () => "Imported bottle of perfume")
                  .RuleFor(r => r.Price, () => 47.50M)
+                 .RuleFor(r => r.Imported, () => true)
                  .RuleFor(r => r.ProductType, () => ProductTypeEnum.Others);
 
             var sale = faker.Generate(1).First();
@@ -48,7 +49,7 @@ namespace SalesTaxesTests.Services
             var saleFaker = new Faker<Sale>();
 
             saleFaker.RuleFor(r => r.ProductType, () => ProductTypeEnum.Food)
-                     .RuleFor(r=> r.Product,()=> "Example")
+                     .RuleFor(r => r.Product, () => "Example")
                      .RuleFor(r => r.Price, () => faker.Random.Decimal(1, 99));
 
             var sale = saleFaker.Generate(1).First();

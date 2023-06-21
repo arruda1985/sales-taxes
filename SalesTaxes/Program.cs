@@ -28,7 +28,15 @@ while (true)
             Console.WriteLine("1 - Food, 2 - Medical, 3 - Books or enter empty answer for none");
 
             var type = Console.ReadLine();
-            inputStr.Add($"{aux}|{type}");
+
+            var imported = string.Empty;
+            while (imported.ToLower() != "y" && imported.ToLower() != "n")
+            {
+                Console.WriteLine("Is the product imported? (Y/N)");
+
+                imported = Console.ReadLine();
+            }
+            inputStr.Add($"{aux}|{type}|{imported}");
         }
         else
         {

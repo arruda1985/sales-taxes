@@ -31,12 +31,18 @@ namespace SalesTaxes.Core.Services
                     GetProductPrice(splitted[0], sale);
                     GetProductName(splitted[0], sale);
                     GetProductType(splitted[1], sale);
+                    GetProductImported(splitted[2], sale);
                     sales.Add(sale);
                 }
             }
 
             return sales;
         }
+
+        private static void GetProductImported(string input, Sale sale)
+        {
+            sale.Imported = input.ToLower() == "y";
+         }
 
         private static void GetProductType(string input, Sale sale)
         {

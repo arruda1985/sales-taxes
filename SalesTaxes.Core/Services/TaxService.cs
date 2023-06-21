@@ -19,7 +19,7 @@ namespace SalesTaxes.Core.Services
             if (!IsTaxFree(sale))
                 totalTax += sale.Price * 0.1M;
 
-            if (sale.Product.ToLower().Contains("imported"))
+            if (sale.Imported)
                 totalTax += sale.Price * 0.05M;
 
             // This next row is to return the tax value rounded

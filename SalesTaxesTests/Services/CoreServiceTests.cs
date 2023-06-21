@@ -18,10 +18,10 @@ namespace SalesTaxesTests.Services
         {
 
             var input = new string[] {
-                                        "1 Book at 12.49|3",
-                                        "1 Book at 12.49|3",
-                                        "1 Music CD at 14.99|",
-                                        "1 Chocolate bar at 0.85|1"
+                                        "1 Book at 12.49|3|n",
+                                        "1 Book at 12.49|3|n",
+                                        "1 Music CD at 14.99||n",
+                                        "1 Chocolate bar at 0.85|1|n"
                                     };
 
             CoreService.Run(input);
@@ -40,8 +40,8 @@ namespace SalesTaxesTests.Services
         {
 
             var input = new string[] {
-                                       "1 Imported box of chocolates at 10.00|1",
-                                       "1 Imported bottle of perfume at 47.50|"
+                                       "1 Imported box of chocolates at 10.00|1|y",
+                                       "1 Imported bottle of perfume at 47.50||y"
                                      };
             CoreService.Run(input);
 
@@ -59,11 +59,11 @@ namespace SalesTaxesTests.Services
         {
 
             var input = new string[] {
-                                        "1 Imported bottle of perfume at 27.99|",
-                                        "1 Bottle of perfume at 18.99|",
-                                        "1 Packet of headache pills at 9.75|2",
-                                        "1 Imported box of chocolates at 11.25|1",
-                                        "1 Imported box of chocolates at 11.25|1"
+                                        "1 Imported bottle of perfume at 27.99||y",
+                                        "1 Bottle of perfume at 18.99||n",
+                                        "1 Packet of headache pills at 9.75|2|n",
+                                        "1 Imported box of chocolates at 11.25|1|y",
+                                        "1 Imported box of chocolates at 11.25|1|y"
                                      };
 
             CoreService.Run(input);
@@ -83,13 +83,13 @@ namespace SalesTaxesTests.Services
         {
 
             var input = new string[] {
-                                        "1 Imported bottle of perfume at 27.99|",
-                                        "1 Imported box of chocolates at 11.25|1",
-                                        "1 Book at 12.49|3",
-                                        "1 Book at 12.49|3",
-                                        "1 Book at 12.49|3",
-                                        "1 Music CD at 14.99|",
-                                        "1 Chocolate bar at 0.85|1"
+                                        "1 Imported bottle of perfume at 27.99||y",
+                                        "1 Imported box of chocolates at 11.25|1|y",
+                                        "1 Book at 12.49|3|n",
+                                        "1 Book at 12.49|3|n",
+                                        "1 Book at 12.49|3|n",
+                                        "1 Music CD at 14.99||n",
+                                        "1 Chocolate bar at 0.85|1|n"
                                      };
 
             CoreService.Run(input);
@@ -110,7 +110,7 @@ namespace SalesTaxesTests.Services
         {
 
             var input = new string[] {
-                                        "1 Music CD at 14.99|",
+                                        "1 Music CD at 14.99||n",
                                      };
 
             CoreService.Run(input);
@@ -127,8 +127,8 @@ namespace SalesTaxesTests.Services
         {
 
             var input = new string[] {
-                                        "1 Imported bottle of perfume at 27.99|",
-                                        "2 Imported box of chocolates at 11.25|1",
+                                        "1 Imported bottle of perfume at 27.99||y",
+                                        "2 Imported box of chocolates at 11.25|1|y",
                                      };
 
 
@@ -147,8 +147,8 @@ namespace SalesTaxesTests.Services
         {
 
             var input = new string[] {
-                                        "1 cd at 10.00|",
-                                        "1 cd at 11.00|",
+                                        "1 cd at 10.00||n",
+                                        "1 cd at 11.00||n",
                                      };
 
 
