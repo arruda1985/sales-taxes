@@ -1,4 +1,6 @@
-﻿namespace SalesTaxes.Core.Models
+﻿using SalesTaxes.Core.Enum;
+
+namespace SalesTaxes.Core.Models
 {
     /// <summary>
     /// Sale model
@@ -8,5 +10,7 @@
         public int Quantity { get; set; }
         public string? Product { get; set; }
         public decimal Price { get; set; }
+
+        public ProductTypeEnum ProductType { get; set; }
     }
 }

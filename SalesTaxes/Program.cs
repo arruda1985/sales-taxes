@@ -18,15 +18,17 @@ while (true)
     var aux = Console.ReadLine();
 
     if (aux?.ToLower() == "exit")
-    {
         Environment.Exit(0);
-    }
 
     if (aux != null && aux.ToLower() != "print")
     {
         if (CoreService.ValidateString(aux))
         {
-            inputStr.Add(aux);
+            Console.WriteLine("Enter the food category");
+            Console.WriteLine("1 - Food, 2 - Medical, 3 - Books or enter empty answer for none");
+
+            var type = Console.ReadLine();
+            inputStr.Add($"{aux}|{type}");
         }
         else
         {
@@ -35,8 +37,6 @@ while (true)
     }
     else
         break;
-
-
 }
 
 // Clearing console to print the receipt

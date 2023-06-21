@@ -1,5 +1,7 @@
 ﻿
+using SalesTaxes.Core.Enum;
 using SalesTaxes.Core.Models;
+using System.Net.Http.Headers;
 
 namespace SalesTaxes.Core.Services
 {
@@ -23,14 +25,37 @@ namespace SalesTaxes.Core.Services
                 {
                     var sale = new Sale();
 
-                    GetQuantity(input, sale);
-                    GetProductPrice(input, sale);
-                    GetProductName(input, sale);
+                    var splitted = input.Split('|');
+
+                    GetQuantity(splitted[0], sale);
+                    GetProductPrice(splitted[0], sale);
+                    GetProductName(splitted[0], sale);
+                    GetProductType(splitted[1], sale);
                     sales.Add(sale);
                 }
             }
 
             return sales;
+        }
+
+        private static void GetProductType(string input, Sale sale)
+        {
+            switch (input)
+            {
+                case "1":
+                    sale.ProductType = ProductTypeEnum.Food;
+                    break;
+                case "2":
+                    sale.ProductType = ProductTypeEnum.Medical;
+                    break;
+                case "3":
+                    sale.ProductType = ProductTypeEnum.Books;
+                    break;
+                default:
+                    sale.ProductType = ProductTypeEnum.Others;
+                    break;
+            }
+
         }
 
         private static void GetProductPrice(string input, Sale sale)

@@ -9,9 +9,9 @@ namespace SalesTaxesTests.Services
         public void LoadInputIntoSales_WithAValidInput_ShouldReturnSales()
         {
             var input = new string[] {
-                                        "1 Book at 12.49",
-                                        "1 Music CD at 14.99",
-                                        "1 Chocolate bar at 0.85"
+                                        "1 Book at 12.49|3",
+                                        "1 Music CD at 14.99|",
+                                        "1 Chocolate bar at 0.85|1"
                                     };
 
 

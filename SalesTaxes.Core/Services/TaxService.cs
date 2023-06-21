@@ -1,5 +1,4 @@
-﻿using SalesTaxes.Core.Constants;
-using SalesTaxes.Core.Models;
+﻿using SalesTaxes.Core.Models;
 
 namespace SalesTaxes.Core.Services
 {
@@ -17,7 +16,7 @@ namespace SalesTaxes.Core.Services
         {
             var totalTax = 0.0M;
 
-            if (!ProductsGroupingTaxes.TaxExceptions.Contains(sale.Product))
+            if (!IsTaxFree(sale))
                 totalTax += sale.Price * 0.1M;
 
             if (sale.Product.ToLower().Contains("imported"))
@@ -28,6 +27,13 @@ namespace SalesTaxes.Core.Services
             // Used  Math.Ceiling() method to round the number up to the nearest whole number.
             // Divided the rounded number by 20 to shift the decimal point back to its original position.
             return Math.Ceiling(totalTax * 20) / 20;
+        }
+
+        private static bool IsTaxFree(Sale sale)
+        {
+            return sale.ProductType == Enum.ProductTypeEnum.Food ||
+                  sale.ProductType == Enum.ProductTypeEnum.Books ||
+                  sale.ProductType == Enum.ProductTypeEnum.Medical;
         }
     }
 }

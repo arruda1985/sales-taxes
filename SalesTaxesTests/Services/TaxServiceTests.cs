@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using SalesTaxes.Core.Constants;
+using SalesTaxes.Core.Enum;
 using SalesTaxes.Core.Models;
 using SalesTaxes.Core.Services;
 using Xunit;
@@ -14,7 +14,8 @@ namespace SalesTaxesTests.Services
             var faker = new Faker<Sale>();
 
             faker.RuleFor(r => r.Product, () => "Imported bottle of perfume")
-                 .RuleFor(r => r.Price, () => 47.50M);
+                 .RuleFor(r => r.Price, () => 47.50M)
+                 .RuleFor(r => r.ProductType, () => ProductTypeEnum.Others);
 
             var sale = faker.Generate(1).First();
 
@@ -30,7 +31,8 @@ namespace SalesTaxesTests.Services
             var faker = new Faker<Sale>();
 
             faker.RuleFor(r => r.Product, () => "Music CD")
-                 .RuleFor(r => r.Price, () => 14.99M);
+                 .RuleFor(r => r.Price, () => 14.99M)
+                 .RuleFor(r => r.ProductType, () => ProductTypeEnum.Others);
 
             var sale = faker.Generate(1).First();
 
@@ -45,7 +47,8 @@ namespace SalesTaxesTests.Services
             var faker = new Faker();
             var saleFaker = new Faker<Sale>();
 
-            saleFaker.RuleFor(r => r.Product, () => ProductsGroupingTaxes.TaxExceptions[0])
+            saleFaker.RuleFor(r => r.ProductType, () => ProductTypeEnum.Food)
+                     .RuleFor(r=> r.Product,()=> "Example")
                      .RuleFor(r => r.Price, () => faker.Random.Decimal(1, 99));
 
             var sale = saleFaker.Generate(1).First();
